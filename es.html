@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dr. Juan Carlos Hernaiz Leonardo · Otorrinolaringología</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --sky:      #00aad2;
+      --sky-lt:   #1dc0e8;
+      --sky-pale: #e6f7fc;
+      --navy:     #003c6e;
+      --navy-lt:  #e8f0f8;
+      --white:    #ffffff;
+      --off:      #f5fafd;
+      --ink:      #0d1a2b;
+      --muted:    #556a7d;
+      --border:   rgba(0,60,110,.1);
+      --sh-sm:    0 2px 16px rgba(0,60,110,.07);
+      --sh-md:    0 8px 40px rgba(0,60,110,.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body { font-family: "Outfit", sans-serif; background: var(--off); color: var(--ink); min-height: 100vh; display: flex; flex-direction: column; }
+    h1,h2,h3 { font-family: "Cormorant Garamond", serif; font-weight: 400; line-height: 1.15; }
+    h1 { font-size: clamp(2rem,4vw,3.4rem); letter-spacing:-.02em; }
+    h2 { font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-size: 1.15rem; }
+    p  { line-height: 1.8; color: var(--muted); font-weight: 300; }
+    a  { color: var(--sky); text-decoration: none; transition: opacity .2s; }
+    a:hover { opacity: .75; }
+
+    /* ── TOP BAR ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--sh-sm);
+      display: flex; align-items: stretch;
+      height: 62px;
+    }
+    .hdr-brand {
+      display: flex; align-items: center; gap: .85rem;
+      padding: 0 1.6rem 0 1.4rem;
+      border-right: 1px solid var(--border);
+      text-decoration: none; white-space: nowrap;
+      flex-shrink: 0; cursor: pointer;
+    }
+    .hdr-brand .bn { font-weight: 600; font-size: .88rem; color: var(--navy); display: block; }
+    .hdr-brand .bs { font-size: .62rem; color: var(--sky); letter-spacing: .14em; text-transform: uppercase; display: block; margin-top: 1px; }
+
+    nav.tabs {
+      display: flex; align-items: stretch; flex: 1; overflow-x: auto;
+      scrollbar-width: none;
+    }
+    nav.tabs::-webkit-scrollbar { display: none; }
+    nav.tabs button {
+      background: none; border: none; cursor: pointer;
+      padding: 0 1.4rem;
+      font-family: "Outfit", sans-serif;
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--navy); opacity: .55;
+      white-space: nowrap;
+      border-bottom: 2.5px solid transparent;
+      transition: opacity .2s, color .2s, border-color .2s;
+    }
+    nav.tabs button:hover { opacity: .85; }
+    nav.tabs button.active { opacity: 1; color: var(--sky); border-bottom-color: var(--sky); }
+
+    /* ── LANGUAGE TOGGLE ── */
+    .lang-toggle {
+      display: flex; align-items: center; gap: 0;
+      margin: auto 1.4rem;
+      border: 1.5px solid var(--border);
+      flex-shrink: 0; overflow: hidden;
+    }
+    .lang-toggle button {
+      background: none; border: none; cursor: pointer;
+      padding: .38rem .75rem;
+      font-family: "Outfit", sans-serif;
+      font-size: .68rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted);
+      transition: background .2s, color .2s;
+    }
+    .lang-toggle button.lang-active {
+      background: var(--navy); color: var(--white);
+    }
+    .lang-toggle button:first-child { border-right: 1.5px solid var(--border); }
+
+    /* ── PAGES ── */
+    .page { display: none; flex: 1; }
+    .page.active { display: block; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 3.5rem 4vw 5rem; }
+
+    /* shared */
+    .stag { display: inline-block; font-size: .65rem; letter-spacing: .22em; text-transform: uppercase; color: var(--sky); font-weight: 500; margin-bottom: .7rem; }
+    .rule { width: 36px; height: 2.5px; background: var(--sky); margin: 1.1rem 0 2rem; border-radius: 2px; }
+
+    /* ══ HOME ══ */
+    .home-grid { display: grid; grid-template-columns: 260px 1fr; gap: 4rem; align-items: start; }
+    .photo-wrap { width: 100%; aspect-ratio: 5/6; overflow: hidden; position: relative; background: var(--navy-lt); }
+    .photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .photo-wrap::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--sky); }
+    .profile-details { margin-top: 1.4rem; }
+    .pd-name { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; color: var(--navy); line-height: 1.2; margin-bottom: .4rem; }
+    .pd-title { font-size: .78rem; color: var(--muted); line-height: 1.7; }
+    .contact-chips { margin-top: 1.4rem; display: flex; flex-direction: column; gap: .55rem; }
+    .cc { display: flex; align-items: flex-start; gap: .6rem; font-size: .78rem; color: var(--muted); }
+    .cc .icon { color: var(--sky); flex-shrink: 0; font-size: .9rem; margin-top: .05rem; }
+    .cc a { color: var(--sky); }
+    .stats-strip { margin-top: 1.6rem; padding: 1.1rem 1.3rem; background: var(--navy); display: flex; }
+    .stat { flex: 1; text-align: center; padding: 0 .5rem; border-right: 1px solid rgba(255,255,255,.1); }
+    .stat:last-child { border-right: none; }
+    .stat .sn { font-family: "Cormorant Garamond", serif; font-size: 1.7rem; font-weight: 300; color: var(--sky); display: block; line-height: 1; }
+    .stat .sl { font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-top: .2rem; display: block; }
+    .bio-col h1 { color: var(--navy); margin-bottom: .5rem; }
+    .bio-col h1 em { font-style: italic; color: var(--sky); }
+    .bio-specs { border-left: 2.5px solid var(--sky); padding-left: 1rem; margin: 1.2rem 0 1.8rem; }
+    .bio-specs p { font-size: .79rem; letter-spacing: .07em; text-transform: uppercase; color: var(--navy); opacity: .7; line-height: 2; font-weight: 400; }
+    .bio-text p { margin-bottom: 1rem; font-size: .93rem; }
+    .bio-text p strong { color: var(--navy); font-weight: 500; }
+    .areas-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: .5rem; }
+    .area-chip { padding: 1rem 1.1rem; border: 1px solid var(--border); background: var(--white); transition: box-shadow .25s, transform .25s; }
+    .area-chip:hover { box-shadow: var(--sh-sm); transform: translateY(-2px); }
+    .area-chip .ai { font-size: 1.3rem; margin-bottom: .5rem; display: block; }
+    .area-chip strong { display: block; font-size: .82rem; color: var(--navy); font-weight: 500; margin-bottom: .2rem; }
+    .area-chip span { font-size: .74rem; color: var(--muted); line-height: 1.5; }
+    .pub-list { display: flex; flex-direction: column; gap: 1.2rem; margin-top: .5rem; }
+    .pub-card { padding: 1.5rem 1.7rem; background: var(--white); border: 1px solid var(--border); display: grid; grid-template-columns: 36px 1fr; gap: 1.2rem; transition: box-shadow .25s, transform .25s; }
+    .pub-card:hover { box-shadow: var(--sh-md); transform: translateX(3px); }
+    .pub-n { font-family: "Cormorant Garamond", serif; font-size: 1.9rem; color: var(--sky); font-weight: 300; opacity: .45; text-align: right; line-height: 1; padding-top: .1rem; }
+    .pub-title { font-size: .93rem; color: var(--navy); font-weight: 500; line-height: 1.5; margin-bottom: .3rem; }
+    .pub-authors { font-size: .76rem; color: var(--muted); margin-bottom: .25rem; line-height: 1.5; }
+    .pub-journal { font-size: .73rem; font-style: italic; color: var(--sky); margin-bottom: .55rem; }
+    .pub-meta { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
+    .pub-tag { font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; padding: .18rem .55rem; background: var(--sky-pale); color: var(--sky); font-weight: 500; }
+    .pub-link { display: inline-flex; align-items: center; gap: .25rem; font-size: .7rem; color: var(--navy); letter-spacing: .07em; text-transform: uppercase; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 1px; transition: color .2s, border-color .2s; }
+    .pub-link:hover { color: var(--sky); border-color: var(--sky); opacity: 1; }
+    .scholar-bar { margin-top: 2rem; padding: 1.4rem 1.8rem; background: var(--navy); display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .scholar-bar .sb-text { flex: 1; }
+    .scholar-bar .sb-text strong { display: block; font-size: .92rem; font-weight: 500; color: var(--white); margin-bottom: .15rem; }
+    .scholar-bar .sb-text span { font-size: .77rem; color: rgba(255,255,255,.5); }
+    .sb-links { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .sb-links a { display: inline-flex; align-items: center; gap: .4rem; padding: .65rem 1.4rem; background: var(--sky); color: var(--white); font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 500; white-space: nowrap; transition: background .2s; }
+    .sb-links a:hover { background: var(--sky-lt); opacity: 1; }
+    .sb-links a.outline { background: rgba(255,255,255,.1); }
+    .sb-links a.outline:hover { background: rgba(255,255,255,.18); }
+
+    /* ══ CV ══ */
+    .cv-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; }
+    .cv-section { margin-bottom: 2.8rem; }
+    .cv-section h3 { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; color: var(--navy); margin-bottom: .4rem; }
+    .cv-rule { width: 30px; height: 2px; background: var(--sky); margin-bottom: 1.5rem; border-radius: 2px; }
+    .cv-entry { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+    .cv-yr { font-size: .68rem; letter-spacing: .07em; color: var(--sky); font-weight: 500; white-space: nowrap; padding-top: .18rem; min-width: 88px; line-height: 1.5; }
+    .cv-body strong { display: block; font-size: .87rem; color: var(--navy); font-weight: 500; margin-bottom: .15rem; }
+    .cv-body em { display: block; font-size: .8rem; color: var(--muted); font-style: normal; margin-bottom: .15rem; }
+    .cv-body span { font-size: .77rem; color: var(--muted); line-height: 1.55; display: block; }
+    .cv-tag { display: inline-block; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; padding: .15rem .5rem; background: var(--sky-pale); color: var(--sky); font-weight: 500; margin-top: .3rem; }
+    .societies-list { display: flex; flex-direction: column; gap: .55rem; }
+    .soc-item { display: flex; align-items: center; gap: .7rem; font-size: .84rem; color: var(--navy); }
+    .soc-item::before { content: ""; width: 5px; height: 5px; background: var(--sky); border-radius: 50%; flex-shrink: 0; }
+    .profiles-row { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .profile-link { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; background: var(--navy); color: var(--white); font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 500; transition: background .2s; }
+    .profile-link:hover { background: #0a5288; opacity: 1; }
+    .profile-link.sky { background: var(--sky); }
+    .profile-link.sky:hover { background: var(--sky-lt); }
+
+    /* ══ VIDEOS ══ */
+    .vid-banner { background: var(--navy); color: var(--white); padding: 1.1rem 1.8rem; margin-bottom: 2.5rem; font-size: .8rem; display: flex; align-items: center; gap: .8rem; border-left: 4px solid var(--sky); }
+    .vid-banner span { opacity: .7; }
+    .vids-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(320px,1fr)); gap: 1.8rem; }
+    .vid-card { background: var(--white); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--sh-sm); transition: transform .3s; }
+    .vid-card:hover { transform: translateY(-4px); }
+    .vid-wrap { position: relative; padding-top: 56.25%; background: var(--navy-lt); }
+    .vid-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+    .vid-cap { padding: 1rem 1.3rem; border-top: 2px solid var(--sky-pale); }
+    .vid-cap h4 { font-size: .88rem; font-weight: 500; color: var(--navy); margin-bottom: .2rem; }
+    .vid-cap p { font-size: .76rem; }
+    .yt-cta-row { margin-top: 2.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .yt-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.8rem; background: #cc0000; color: var(--white); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; transition: opacity .2s; }
+    .yt-btn:hover { opacity: .85; }
+
+    /* ══ SINES ══ */
+    .sines-intro { margin-bottom: 2.5rem; max-width: 680px; }
+    .sines-intro p { font-size: .92rem; }
+    .formula-box { display: inline-block; margin-top: .8rem; padding: .55rem 1.1rem; background: var(--sky-pale); border-left: 3px solid var(--sky); font-size: .8rem; color: var(--navy); }
+    .sines-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; }
+    .tbl-wrap { overflow-x: auto; }
+    table.st { width: 100%; border-collapse: collapse; font-size: .83rem; }
+    table.st thead th { padding: .6rem .9rem; text-align: left; font-size: .63rem; letter-spacing: .16em; text-transform: uppercase; color: var(--sky); font-weight: 500; border-bottom: 2px solid var(--sky); background: var(--white); white-space: nowrap; }
+    table.st tbody td { padding: .55rem .9rem; border-bottom: 1px solid var(--border); color: var(--navy); background: var(--white); }
+    table.st tbody tr:hover td { background: var(--sky-pale); }
+    table.st tbody tr.row-na td { opacity: .3; }
+    table.st tbody tr.row-na td:last-child { opacity: 1; }
+    table.st td:first-child { font-weight: 500; font-size: .79rem; white-space: nowrap; }
+    .csel { width: 100%; padding: .3rem .4rem; border: 1px solid var(--border); background: var(--off); font-family: "Outfit", sans-serif; font-size: .76rem; color: var(--navy); border-radius: 0; appearance: none; cursor: pointer; }
+    .csel:focus { outline: 2px solid var(--sky); }
+    .csel:disabled { opacity: .35; cursor: default; }
+    .cchk { accent-color: var(--sky); cursor: pointer; transform: scale(1.15); }
+    .na-note { font-size: .59rem; color: var(--muted); display: block; margin-top: 2px; }
+    .polyp-block { margin-top: 1.3rem; padding: 1.3rem; background: var(--white); border: 1px solid var(--border); }
+    .pb-title { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: var(--sky); font-weight: 500; margin-bottom: .85rem; display: block; }
+    .polyp-opts { display: flex; flex-direction: column; gap: .45rem; }
+    .polyp-opts label { display: flex; align-items: flex-start; gap: .6rem; font-size: .81rem; color: var(--navy); cursor: pointer; line-height: 1.45; transition: opacity .2s; }
+    .polyp-opts input[type="radio"] { accent-color: var(--sky); margin-top: .12rem; flex-shrink: 0; }
+    .polyp-opts label.polyp-locked { opacity: .3; cursor: not-allowed; }
+    .polyp-opts label.polyp-locked input[type="radio"] { cursor: not-allowed; }
+    .polyp-lock-notice {
+      margin-top: .85rem; padding: .55rem .8rem;
+      background: var(--sky-pale); border-left: 2.5px solid var(--sky);
+      font-size: .7rem; color: var(--navy); line-height: 1.55;
+      display: none;
+    }
+    .polyp-lock-notice.visible { display: block; }
+    .pts { font-size: .68rem; color: var(--sky); font-weight: 500; white-space: nowrap; }
+    .res-panel { background: var(--navy); padding: 2.2rem 1.8rem; position: sticky; top: 78px; }
+    .rp-title { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; color: var(--white); margin-bottom: .2rem; }
+    .rp-sub { font-size: .71rem; color: rgba(255,255,255,.4); margin-bottom: 1.7rem; line-height: 1.55; }
+    .score-big { text-align: center; padding: 1.3rem 1rem; background: rgba(255,255,255,.05); border: 1px solid rgba(0,170,210,.18); margin-bottom: 1.3rem; }
+    .score-val { font-family: "Cormorant Garamond", serif; font-size: 5rem; font-weight: 300; line-height: 1; color: var(--sky); display: block; }
+    .score-max { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.28); }
+    .sub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; margin-bottom: 1.3rem; }
+    .sub-cell { background: rgba(255,255,255,.06); padding: .8rem; text-align: center; }
+    .sv { display: block; font-size: 1.4rem; font-family: "Cormorant Garamond", serif; color: var(--white); }
+    .sl { display: block; font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-top: .12rem; }
+    .sev-bar { margin-bottom: 1rem; }
+    .sev-labels { display: flex; justify-content: space-between; font-size: .61rem; letter-spacing: .07em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .36rem; }
+    .sev-track { height: 5px; background: rgba(255,255,255,.1); border-radius: 3px; overflow: hidden; }
+    .sev-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg,var(--sky),#00d4c8,#4db8ff); transition: width .55s cubic-bezier(.4,0,.2,1); }
+    .sev-text { text-align: center; margin-top: .7rem; font-size: .74rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 500; min-height: 1.1em; }
+    .sev-none{color:#6fcf97;} .sev-mild{color:#f2c94c;} .sev-moderate{color:#f2994a;} .sev-severe{color:#eb5757;}
+    .calc-go { width: 100%; padding: .9rem; margin-top: .5rem; background: var(--sky); color: var(--white); border: none; cursor: pointer; font-family: "Outfit", sans-serif; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; transition: background .2s; }
+    .calc-go:hover { background: var(--sky-lt); }
+    .calc-rst { width: 100%; padding: .65rem; margin-top: .4rem; background: rgba(255,255,255,.07); color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.12); cursor: pointer; font-family: "Outfit", sans-serif; font-size: .68rem; letter-spacing: .13em; text-transform: uppercase; transition: .2s; }
+    .calc-rst:hover { background: rgba(255,255,255,.13); color: var(--white); }
+    .ref-note { margin-top: 1.6rem; padding: .85rem 1.1rem; border-left: 2px solid var(--sky); background: var(--white); font-size: .69rem; color: var(--muted); line-height: 1.65; font-style: italic; }
+
+    /* ── SCORE CONVERSIONS ── */
+    .conv-section { margin-top: 3rem; }
+    .conv-section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; color: var(--navy); margin-bottom: .3rem; }
+    .conv-section-sub { font-size: .78rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.7; }
+    .conv-section-sub strong { color: var(--navy); font-weight: 500; }
+    .conv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+    .conv-card { background: var(--white); border: 1px solid var(--border); overflow: hidden; }
+    .conv-card-head {
+      padding: .85rem 1.2rem;
+      display: flex; align-items: baseline; justify-content: space-between; gap: .5rem;
+    }
+    .conv-card-head.mlk  { background: var(--navy); }
+    .conv-card-head.nps  { background: #1a5276; }
+    .conv-card-head.dip  { background: #0e4c6e; }
+    .conv-card-name { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.65); font-weight: 500; }
+    .conv-card-full { font-size: .62rem; color: rgba(255,255,255,.4); }
+    .conv-score-display { padding: 1.2rem 1.2rem .6rem; display: flex; align-items: baseline; gap: .4rem; }
+    .conv-score-big { font-family: "Cormorant Garamond", serif; font-size: 3.4rem; font-weight: 300; color: var(--sky); line-height: 1; }
+    .conv-score-max { font-size: .72rem; color: var(--muted); }
+    .conv-breakdown { padding: .2rem 1.2rem 1.2rem; display: flex; flex-direction: column; gap: .4rem; }
+    .conv-row { display: flex; justify-content: space-between; align-items: center; font-size: .76rem; padding: .3rem 0; border-bottom: 1px solid var(--border); }
+    .conv-row:last-child { border-bottom: none; }
+    .conv-row .cr-label { color: var(--muted); }
+    .conv-row .cr-val { font-weight: 600; color: var(--navy); font-size: .82rem; min-width: 28px; text-align: right; }
+    .conv-nps-grade { padding: 1rem 1.2rem 1.4rem; }
+    .conv-nps-bar { display: flex; gap: 5px; margin: .6rem 0 .5rem; }
+    .conv-nps-dot { flex: 1; height: 8px; border-radius: 2px; background: var(--border); transition: background .4s; }
+    .conv-nps-dot.filled { background: var(--sky); }
+    .conv-nps-label { font-size: .73rem; color: var(--navy); font-weight: 500; }
+    .conv-nps-desc  { font-size: .68rem; color: var(--muted); margin-top: .2rem; }
+    .conv-est-note { margin: .5rem 1.2rem .8rem; padding: .45rem .7rem; background: var(--sky-pale); font-size: .65rem; color: var(--sky); line-height: 1.5; border-radius: 0; display: flex; gap: .4rem; align-items: flex-start; }
+    .conv-na { padding: 1.5rem 1.2rem; text-align: center; font-size: .78rem; color: var(--muted); }
+    @media (max-width: 760px) { .conv-grid { grid-template-columns: 1fr; } }
+
+
+    /* ── FAQ PAGE ── */
+    .faq-list { display: flex; flex-direction: column; gap: .85rem; max-width: 860px; }
+    .faq-item { border: 1px solid var(--border); background: var(--white); overflow: hidden; }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+      padding: 1.35rem 1.6rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1.2rem;
+      font-family: "Outfit", sans-serif; font-size: .95rem; font-weight: 500;
+      color: var(--navy); line-height: 1.45;
+      transition: background .2s;
+    }
+    .faq-q:hover { background: var(--sky-pale); }
+    .faq-q.open { background: var(--sky-pale); border-bottom: 2px solid var(--sky); }
+    .faq-icon {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+      background: var(--sky); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; font-weight: 600; line-height: 1;
+      transition: transform .3s, background .2s;
+      margin-top: .12rem;
+    }
+    .faq-q.open .faq-icon { transform: rotate(45deg); background: var(--navy); }
+    .faq-a {
+      display: none; padding: 1.2rem 1.6rem 1.5rem;
+      font-size: .88rem; color: var(--muted); line-height: 1.85;
+      border-top: 1px solid var(--border);
+    }
+    .faq-a.open { display: block; }
+    .faq-alert {
+      display: block; margin-top: 1rem; padding: .8rem 1rem;
+      background: #fff5f5; border-left: 3px solid #eb5757;
+      font-size: .84rem; color: #c0392b; line-height: 1.65; border-radius: 0;
+    }
+    .faq-intro { max-width: 620px; margin-bottom: 2.5rem; }
+
+
+    /* ── RESOURCES PAGE ── */
+    .res-intro { max-width: 640px; margin-bottom: 2.5rem; }
+    .res-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.4rem;
+    }
+    .res-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .res-card:hover { box-shadow: 0 8px 32px rgba(0,60,110,.12); transform: translateY(-3px); }
+    .res-card-head {
+      background: var(--navy); padding: 1.2rem 1.4rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .res-card-icon {
+      width: 42px; height: 42px; background: rgba(0,170,210,.18);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1.2rem;
+    }
+    .res-card-head-text { flex: 1; min-width: 0; }
+    .res-card-category {
+      font-size: .58rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--sky); display: block; margin-bottom: .2rem;
+    }
+    .res-card-title {
+      font-size: .88rem; font-weight: 500; color: var(--white);
+      line-height: 1.3;
+    }
+    .res-card-body {
+      padding: 1.1rem 1.4rem 1.3rem; flex: 1;
+      border-bottom: 1px solid var(--border);
+    }
+    .res-card-desc { font-size: .8rem; color: var(--muted); line-height: 1.7; }
+    .res-card-footer { padding: .9rem 1.4rem; }
+    .res-dl-btn {
+      display: flex; align-items: center; justify-content: center; gap: .55rem;
+      width: 100%; padding: .75rem;
+      background: var(--sky); color: var(--white);
+      border: none; cursor: pointer;
+      font-family: "Outfit", sans-serif;
+      font-size: .7rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .res-dl-btn:hover { background: var(--sky-lt); opacity: 1; }
+    .res-dl-btn .dl-icon { font-size: .9rem; }
+    @media (max-width: 680px) {
+      .res-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── CONTACT PAGE ── */
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; }
+    .contact-info-col h3 { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; color: var(--navy); margin-bottom: .4rem; }
+    .contact-info-col .cv-rule { width: 30px; height: 2px; background: var(--sky); margin-bottom: 1.6rem; border-radius: 2px; }
+    .cinfo-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+    .cinfo-icon { font-size: 1.1rem; color: var(--sky); flex-shrink: 0; margin-top: .1rem; width: 22px; text-align: center; }
+    .cinfo-body strong { display: block; font-size: .86rem; color: var(--navy); font-weight: 500; margin-bottom: .2rem; }
+    .cinfo-body span, .cinfo-body a { font-size: .82rem; color: var(--muted); line-height: 1.7; display: block; }
+    .cinfo-body a { color: var(--sky); }
+    .cinfo-body a:hover { opacity: .75; }
+    .contact-map { margin-top: 2rem; background: var(--navy-lt); border: 1px solid var(--border); padding: 1.8rem; text-align: center; }
+    .contact-map .map-icon { font-size: 2rem; margin-bottom: .8rem; display: block; }
+    .contact-map p { font-size: .82rem; line-height: 1.7; margin-bottom: 1.1rem; }
+    .contact-map a.map-link { display: inline-flex; align-items: center; gap: .4rem; padding: .65rem 1.4rem; background: var(--sky); color: var(--white); font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 500; transition: background .2s; }
+    .contact-map a.map-link:hover { background: var(--sky-lt); opacity: 1; }
+
+    /* Contact form */
+    .contact-form-col h3 { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; color: var(--navy); margin-bottom: .4rem; }
+    .contact-form-col .cv-rule { width: 30px; height: 2px; background: var(--sky); margin-bottom: 1.6rem; border-radius: 2px; }
+    .contact-form-col p { font-size: .85rem; margin-bottom: 1.8rem; }
+    .cf-field { margin-bottom: 1.3rem; }
+    .cf-field label { display: block; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--sky); font-weight: 500; margin-bottom: .5rem; }
+    .cf-field input, .cf-field textarea {
+      width: 100%; padding: .75rem 1rem;
+      border: 1.5px solid var(--border); background: var(--white);
+      font-family: "Outfit", sans-serif; font-size: .88rem; color: var(--ink);
+      border-radius: 0; outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .cf-field input:focus, .cf-field textarea:focus {
+      border-color: var(--sky);
+      box-shadow: 0 0 0 3px rgba(0,170,210,.1);
+    }
+    .cf-field textarea { resize: vertical; min-height: 160px; line-height: 1.7; }
+    .cf-counter { display: flex; justify-content: flex-end; font-size: .68rem; color: var(--muted); margin-top: .35rem; }
+    .cf-counter span.over { color: #eb5757; font-weight: 600; }
+    .cf-submit {
+      width: 100%; padding: 1rem; background: var(--sky); color: var(--white);
+      border: none; cursor: pointer; font-family: "Outfit", sans-serif;
+      font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500;
+      transition: background .2s, transform .2s;
+      margin-top: .4rem;
+    }
+    .cf-submit:hover { background: var(--sky-lt); transform: translateY(-1px); }
+    .cf-submit:disabled { background: var(--muted); cursor: not-allowed; transform: none; opacity: .6; }
+    .cf-notice {
+      margin-top: 1rem; padding: .8rem 1rem; font-size: .78rem; line-height: 1.6;
+      display: none;
+    }
+    .cf-notice.success { background: #eafaf1; border-left: 3px solid #27ae60; color: #1e8449; display: block; }
+    .cf-notice.error   { background: #fdedec; border-left: 3px solid #e74c3c; color: #c0392b; display: block; }
+    .cf-formspree-note { margin-top: 1.5rem; padding: .8rem 1rem; background: var(--sky-pale); border-left: 2px solid var(--sky); font-size: .72rem; color: var(--muted); line-height: 1.6; }
+    .cf-formspree-note a { color: var(--sky); }
+    @media (max-width: 760px) { .contact-layout { grid-template-columns: 1fr; } }
+
+    /* ── CONTACT PAGE ── */
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; align-items: start; }
+    .contact-info-col {}
+    .contact-info-col h3 { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; color: var(--navy); margin-bottom: .4rem; }
+    .cinfo-rule { width: 30px; height: 2px; background: var(--sky); margin-bottom: 1.6rem; border-radius: 2px; }
+    .cinfo-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+    .cinfo-icon { font-size: 1.1rem; color: var(--sky); flex-shrink: 0; margin-top: .1rem; }
+    .cinfo-item strong { display: block; font-size: .86rem; color: var(--navy); font-weight: 500; margin-bottom: .15rem; }
+    .cinfo-item span, .cinfo-item a { font-size: .82rem; color: var(--muted); line-height: 1.65; display: block; }
+    .cinfo-item a { color: var(--sky); }
+    .cinfo-item a:hover { opacity: .75; }
+    .cinfo-map { margin-top: 2rem; background: var(--navy-lt); border: 1px solid var(--border); padding: 2rem; text-align: center; }
+    .cinfo-map .cm-icon { font-size: 2rem; margin-bottom: .7rem; display: block; }
+    .cinfo-map p { font-size: .82rem; color: var(--muted); margin-bottom: 1rem; }
+    .cinfo-map a.map-btn { display: inline-block; padding: .65rem 1.4rem; background: var(--navy); color: var(--white); font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 500; transition: background .2s; }
+    .cinfo-map a.map-btn:hover { background: #0a5288; opacity: 1; }
+
+    /* Contact Form */
+    .contact-form-col {}
+    .contact-form-col h3 { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; color: var(--navy); margin-bottom: .4rem; }
+    .form-group { margin-bottom: 1.4rem; }
+    .form-group label { display: block; font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--navy); font-weight: 500; margin-bottom: .5rem; }
+    .form-group input[type="text"],
+    .form-group textarea {
+      width: 100%; padding: .8rem 1rem;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      font-family: "Outfit", sans-serif; font-size: .88rem; color: var(--ink);
+      border-radius: 0; outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      resize: vertical;
+    }
+    .form-group input[type="text"]:focus,
+    .form-group textarea:focus {
+      border-color: var(--sky);
+      box-shadow: 0 0 0 3px rgba(0,170,210,.1);
+    }
+    .form-group textarea { min-height: 180px; line-height: 1.7; }
+    .char-counter { text-align: right; font-size: .68rem; color: var(--muted); margin-top: .3rem; transition: color .2s; }
+    .char-counter.warn { color: #f2994a; }
+    .char-counter.over { color: #eb5757; font-weight: 600; }
+    .form-hint { font-size: .73rem; color: var(--muted); margin-top: .35rem; line-height: 1.55; }
+    .form-send-btn {
+      width: 100%; padding: 1rem; background: var(--sky); color: var(--white);
+      border: none; cursor: pointer; font-family: "Outfit", sans-serif;
+      font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500;
+      transition: background .2s, transform .15s;
+      display: flex; align-items: center; justify-content: center; gap: .6rem;
+    }
+    .form-send-btn:hover { background: var(--sky-lt); transform: translateY(-1px); }
+    .form-send-btn:disabled { background: var(--border); cursor: not-allowed; transform: none; color: var(--muted); }
+    .form-notice {
+      margin-top: 1rem; padding: .85rem 1.1rem;
+      font-size: .74rem; line-height: 1.6; display: none;
+    }
+    .form-notice.info { background: var(--sky-pale); border-left: 3px solid var(--sky); color: var(--navy); display: block; }
+    .form-notice.error { background: #fdf2f2; border-left: 3px solid #eb5757; color: #c0392b; display: block; }
+
+    /* FOOTER */
+    footer { background: var(--white); border-top: 1px solid var(--border); padding: 1.2rem 4vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .8rem; margin-top: auto; }
+    footer p { font-size: .7rem; color: var(--muted); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .home-grid { grid-template-columns: 1fr; }
+      .profile-col { display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem; align-items: start; }
+      .stats-strip { display: none; }
+      .cv-layout { grid-template-columns: 1fr; }
+      .sines-layout { grid-template-columns: 1fr; }
+      .areas-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .profile-col { grid-template-columns: 1fr; }
+      .areas-grid { grid-template-columns: 1fr; }
+      .pub-card { grid-template-columns: 1fr; }
+      .pub-n { display: none; }
+      nav.tabs button { padding: 0 .85rem; }
+      .hdr-brand { padding: 0 .9rem; }
+      .hdr-brand .bs { display: none; }
+    }
+  </style>
+</head>
+<body>
+<!-- ══ TOP BAR ══ -->
+<header>
+<div class="hdr-brand" onclick="showPage('home')">
+<svg fill="none" height="30" viewbox="0 0 100 88" width="34">
+<path d="M68 10 A40 40 0 1 0 68 78" fill="none" stroke="#00aad2" stroke-linecap="round" stroke-width="9"></path>
+<line stroke="#003c6e" stroke-linecap="round" stroke-width="7.5" x1="50" x2="50" y1="28" y2="60"></line>
+<line stroke="#003c6e" stroke-linecap="round" stroke-width="7.5" x1="38" x2="62" y1="60" y2="60"></line>
+<path d="M76 32 Q98 44 76 58" fill="none" stroke="#003c6e" stroke-linecap="round" stroke-width="7.5"></path>
+</svg>
+<div>
+<span class="bn">Dr. Juan Carlos Hernaiz Leonardo</span>
+<span class="bs">Rinología · Cirugía de Base de Cráneo · CDMX</span>
+
+</div>
+</div>
+<a href="index.html" style="display:flex;align-items:center;gap:.4rem;padding:0 1.2rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid var(--border);white-space:nowrap;height:100%;">← Inicio</a>
+<nav class="tabs">
+<button class="active" id="tab-home" onclick="showPage('home')">
+<span>Inicio</span>
+</button>
+<button id="tab-cv" onclick="showPage('cv')">
+<span>Curriculum Vitae</span>
+</button>
+<button id="tab-videos" onclick="showPage('videos')">
+<span>Videos</span>
+</button>
+<button id="tab-faq" onclick="showPage('faq')">
+<span>Preguntas Frecuentes</span>
+</button>
+<button id="tab-resources" onclick="showPage('resources')">
+<span>Recursos</span>
+</button>
+<button id="tab-sines" onclick="showPage('sines')">
+<span>Calculadora SiNES</span>
+</button>
+<button id="tab-contact" onclick="showPage('contact')">
+<span>Contacto</span>
+</button>
+</nav>
+<!-- LANGUAGE TOGGLE --></header>
+<!-- ══════════════════════════════════════
+     PAGE: HOME
+══════════════════════════════════════ -->
+<div class="page active" id="page-home">
+<div class="container">
+<div class="home-grid">
+<!-- LEFT: photo + contact -->
+<div class="profile-col">
+<div>
+<div class="photo-wrap">
+<img alt="Dr. Juan Carlos Hernaiz Leonardo" src="data:image/jpeg;base64,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"/>
+</div>
+<div class="stats-strip">
+<div class="stat"><span class="sn">24+</span><span class="sl">Publicaciones</span></div>
+<div class="stat"><span class="sn">232</span><span class="sl">Citas</span></div>
+<div class="stat"><span class="sn">7</span><span class="sl">h-index</span></div>
+</div>
+</div>
+<div class="profile-details">
+<div class="pd-name">Dr. Juan Carlos<br/>Hernaiz Leonardo</div>
+<div class="pd-title">Otorrinolaringólogo<br/>Rinólogo y Cirujano de Base de Cráneo<br/>PhD · University of British Columbia</div>
+
+<div class="contact-chips">
+<div class="cc"><span class="icon">📍</span>
+<span>Hospital Ángeles Pedregal<br/>Piso 1, Cons. 129 · CDMX</span>
+
+</div>
+<div class="cc"><span class="icon">📞</span><a href="tel:+525619903163">+52 56 1990 3163</a></div>
+<div class="cc"><span class="icon">✉️</span><a href="/cdn-cgi/l/email-protection#d7bfb2a5b9b6beadf9bdb497b0bab6bebbf9b4b8ba"><span class="__cf_email__" data-cfemail="9ef6fbecf0fff7e4b0f4fddef9f3fff7f2b0fdf1f3">[email protected]</span></a></div>
+<div class="cc"><span class="icon">🔗</span>
+<span>
+<a href="https://scholar.google.com/citations?user=w6OdhTkAAAAJ&amp;hl=en" rel="noopener" target="_blank">Google Scholar</a>
+                 · 
+                <a href="https://www.researchgate.net/profile/Juan-Hernaiz" rel="noopener" target="_blank">ResearchGate</a>
+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT: bio + areas + publications -->
+<div class="bio-col">
+<span class="stag">Otorrinolaringología · Ciudad de México</span>
+
+<h1>Rinólogo y Cirujano<br/>de <em>Base de Cráneo</em></h1>
+
+<div class="bio-specs">
+<p>Otorrinolaringología y Cirugía de Cabeza y Cuello</p>
+<p>Cirugía de Senos Paranasales y Base de Cráneo</p>
+<p>Médico Adscrito · Instituto Nacional de Rehabilitación</p>
+</div>
+
+<div class="bio-text">
+<p>Especialista en el diagnóstico y tratamiento de la <strong>rinosinusitis crónica recalcitrante</strong> y enfermedades de nariz, senos paranasales y base de cráneo. Médico adscrito en el Instituto Nacional de Rehabilitación, investigador principal en ensayo clínico internacional, y docente del curso de residencia de ORL.</p>
+
+<p>Realicé mi <strong>PhD en Population and Public Health</strong> en la Universidad de British Columbia (2025) y un <strong>Fellowship en Rinología y Cirugía de Base de Cráneo</strong> en UBC/St. Paul's Sinus Centre, donde operé más de 250 casos como cirujano principal. Co-desarrollador del <strong>SiNES</strong>, sistema de puntuación endoscópica validado publicado en <em>Rhinology</em> (2024).</p>
+
+</div>
+<div style="margin-top:2rem">
+<span class="stag">Áreas de atención</span>
+
+<div class="rule" style="margin-top:.6rem"></div>
+<div class="areas-grid">
+<div class="area-chip"><span class="ai">🔬</span>
+<strong>Rinosinusitis Crónica</strong>
+<span>CRS con y sin pólipos, formas recalcitrantes</span>
+
+</div>
+<div class="area-chip"><span class="ai">🏥</span>
+<strong>Cirugía FESS</strong>
+<span>Cirugía endoscópica funcional y de revisión</span>
+
+</div>
+<div class="area-chip"><span class="ai">🧠</span>
+<strong>Base de Cráneo</strong>
+<span>Cirugía endoscópica de base de cráneo anterior</span>
+
+</div>
+<div class="area-chip"><span class="ai">👃</span>
+<strong>Trastornos del Olfato</strong>
+<span>Pérdida del olfato asociada a CRS</span>
+
+</div>
+<div class="area-chip"><span class="ai">💉</span>
+<strong>Terapias Biológicas</strong>
+<span>Dupilumab, mepolizumab</span>
+
+</div>
+<div class="area-chip"><span class="ai">🍄</span>
+<strong>Rinositusitis Fúngica</strong>
+<span>Diagnóstico y manejo de AFRS</span>
+
+</div>
+</div>
+</div>
+<div style="margin-top:3rem">
+<span class="stag">Publicaciones selectas en Rinología</span>
+
+<div class="rule" style="margin-top:.6rem"></div>
+<div class="pub-list">
+<div class="pub-card">
+<div class="pub-n">1</div>
+<div>
+<div class="pub-title">Development and validation of the Sinonasal Endoscopic Score (SiNES) for chronic rhinosinusitis</div>
+<div class="pub-authors"><strong>Hernaiz-Leonardo JC</strong>, Alim BM, Pascual A, Aldossari K, Fan J, Alsaleh S, Javer AR.</div>
+<div class="pub-journal">Rhinology · 62:4 · 2024</div>
+<div class="pub-meta">
+<span class="pub-tag">Primer autor</span>
+<span class="pub-tag">Score validado</span>
+<a class="pub-link" href="https://doi.org/10.4193/Rhin23.434" rel="noopener" target="_blank">↗ DOI 10.4193/Rhin23.434</a>
+</div>
+</div>
+</div>
+<div class="pub-card">
+<div class="pub-n">2</div>
+<div>
+<div class="pub-title">Novel Therapies for Recalcitrant Chronic Rhinosinusitis</div>
+<div class="pub-authors"><strong>Hernaiz-Leonardo JC</strong>, Alim BM, Javer AR.</div>
+<div class="pub-journal">Advances in Surgical and Medical Interventions for Recalcitrant CRS · Springer · 2025</div>
+<div class="pub-meta">
+<span class="pub-tag">Primer autor</span>
+<span class="pub-tag">Capítulo Springer</span>
+<a class="pub-link" href="https://doi.org/10.1007/978-3-031-89191-5_26" rel="noopener" target="_blank">↗ View chapter</a>
+</div>
+</div>
+</div>
+<div class="pub-card">
+<div class="pub-n">3</div>
+<div>
+<div class="pub-title">Comparison between upper and lower airway microbiome profiles in chronic rhinosinusitis patients</div>
+<div class="pub-authors"><strong>Hernaiz-Leonardo JC</strong>, Ryu C, Pascual A, Fan J, Caray M, Pezato R, Yang J, Sin D, Thamboo A.</div>
+<div class="pub-journal">International Forum of Allergy &amp; Rhinology · 2024</div>
+<div class="pub-meta">
+<span class="pub-tag">Primer autor</span>
+<span class="pub-tag">Microbiome</span>
+<a class="pub-link" href="https://pubmed.ncbi.nlm.nih.gov/?term=Hernaiz-Leonardo+microbiome+rhinosinusitis+2024" rel="noopener" target="_blank">↗ PubMed</a>
+</div>
+</div>
+</div>
+<div class="pub-card">
+<div class="pub-n">4</div>
+<div>
+<div class="pub-title">SinoNasal Microbiota Transfer to treat recalcitrant chronic rhinosinusitis: A case series</div>
+<div class="pub-authors">Gill SK, <strong>Hernaiz-Leonardo JC</strong>, Edens TJ, Pascual A, Tang C, Fan J, et al.</div>
+<div class="pub-journal">International Forum of Allergy &amp; Rhinology · 2024</div>
+<div class="pub-meta">
+<span class="pub-tag">Co-autor</span>
+<span class="pub-tag">Trasplante microbiota</span>
+<a class="pub-link" href="https://pubmed.ncbi.nlm.nih.gov/?term=SinoNasal+Microbiota+Transfer+recalcitrant+2024" rel="noopener" target="_blank">↗ PubMed</a>
+</div>
+</div>
+</div>
+<div class="pub-card">
+<div class="pub-n">5</div>
+<div>
+<div class="pub-title">Maxillary sinus volume changes after FESS in patients with chronic maxillary atelectasis and silent sinus syndrome</div>
+<div class="pub-authors"><strong>Hernaiz-Leonardo JC</strong>, Alqunaee M, Moghimi S, Alim BM, Javadian F, Pascual A, Javer A.</div>
+<div class="pub-journal">International Forum of Allergy &amp; Rhinology · 2022</div>
+<div class="pub-meta">
+<span class="pub-tag">Primer autor</span>
+<span class="pub-tag">FESS</span>
+<a class="pub-link" href="https://doi.org/10.1002/alr.22985" rel="noopener" target="_blank">↗ DOI 10.1002/alr.22985</a>
+</div>
+</div>
+</div>
+</div>
+<div class="scholar-bar">
+<div class="sb-text">
+<strong>Ver lista completa de publicaciones</strong>
+
+<span>24+ <span>artículos</span> · 232+ <span>citas</span> · h-index 7 · i10-index 5</span>
+</div>
+<div class="sb-links">
+<a class="sky" href="https://scholar.google.com/citations?user=w6OdhTkAAAAJ&amp;hl=en" rel="noopener" target="_blank">↗ Google Scholar</a>
+<a class="outline" href="https://pubmed.ncbi.nlm.nih.gov/?term=Hernaiz-Leonardo+JC" rel="noopener" target="_blank">↗ PubMed</a>
+</div>
+</div>
+</div>
+</div><!-- /.bio-col -->
+</div><!-- /.home-grid -->
+</div>
+</div>
+<!-- ══════════════════════════════════════
+     PAGE: CV
+══════════════════════════════════════ -->
+<div class="page" id="page-cv">
+<div class="container">
+<span class="stag">Trayectoria académica y profesional</span>
+
+<h2>Curriculum Vitae</h2>
+
+<div class="rule"></div>
+<div class="cv-layout">
+<!-- LEFT -->
+<div>
+<div class="cv-section">
+<h3>Educación</h3>
+<div class="cv-rule"></div>
+<div class="cv-entry">
+<span class="cv-yr">2020 – 2025</span>
+<div class="cv-body">
+<strong>PhD · Population and Public Health</strong>
+<em>University of British Columbia · Vancouver, Canada</em>
+<span>Tesis: Diseño y validación del SiNES. Supervisores: Dr. Amin R. Javer, Dra. Amee Manges.</span>
+
+<span class="cv-tag">Four Year Doctoral Fellowship Award (~18,000 CAD/yr)</span>
+</div>
+</div>
+<div class="cv-entry">
+<span class="cv-yr">2022 – 2023</span>
+<div class="cv-body">
+<strong>Fellowship en Rinología y Cirugía de Base de Cráneo</strong>
+
+<em>University of British Columbia · St. Paul's Sinus Centre</em>
+<span>Más de 250 cirugías endoscópicas como cirujano principal.</span>
+
+</div>
+</div>
+<div class="cv-entry">
+<span class="cv-yr">2018 – 2020</span>
+<div class="cv-body">
+<strong>Maestría en Ciencias Médicas</strong>
+
+<em>Universidad Nacional Autónoma de México</em>
+<span>Mención honorífica. Microbioma nasosinusal en rinosinusitis.</span>
+
+</div>
+</div>
+<div class="cv-entry">
+<span class="cv-yr">2016 – 2020</span>
+<div class="cv-body">
+<strong>Residencia en ORL y Cirugía de Cabeza y Cuello</strong>
+
+<em>Instituto Nacional de Rehabilitación · Ciudad de México</em>
+
+<span>Mención honorífica. Jefe de residentes 2019–2020. 9.º lugar ENARM.</span>
+
+</div>
+</div>
+<div class="cv-entry">
+<span class="cv-yr">2009 – 2016</span>
+<div class="cv-body">
+<strong>Médico Cirujano · Programa PAEA</strong>
+
+<em>Facultad de Medicina, UNAM</em>
+<span>Promedio 9.34/10. Mención honorífica en examen profesional.</span>
+
+</div>
+</div>
+</div>
+<div class="cv-section">
+<h3>Rotaciones Internacionales</h3>
+
+<div class="cv-rule"></div>
+<div class="cv-entry">
+<span class="cv-yr">2019</span>
+<div class="cv-body">
+<strong>Stanford University</strong>
+<em>Stanford, CA — Rinología y Base de Cráneo</em>
+
+<span>Peter H. Hwang MD · Jayakar V. Nayak MD PhD</span>
+</div>
+</div>
+<div class="cv-entry">
+<span class="cv-yr">2019</span>
+<div class="cv-body">
+<strong>St. Paul's Sinus Centre</strong>
+<em>Vancouver, Canadá — Observership</em>
+
+<span>Amin Javer MD</span>
+</div>
+</div>
+<div class="cv-entry">
+<span class="cv-yr">2018</span>
+<div class="cv-body">
+<strong>Emory University</strong>
+<em>Atlanta, GA — Mini-fellowship + disección en cadáver</em>
+
+<span>Sarah K. Wise MD · John M. DelGaudio MD</span>
+</div>
+</div>
+<div class="cv-entry">
+<span class="cv-yr">2014</span>
+<div class="cv-body">
+<strong>Princess Alexandra Hospital</strong>
+<em>Brisbane, Australia — Cabeza y Cuello (GEMx)</em>
+
+<span>Ben Panizza MD · Nicolas Potter MD</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT -->
+<div>
+<div class="cv-section">
+<h3>Historia Laboral</h3>
+
+<div class="cv-rule"></div>
+<div class="cv-entry">
+<span class="cv-yr">2025 – Actual</span>
+
+<div class="cv-body">
+<strong>Médico Adscrito · Subdirección de ORL</strong>
+
+<em>Instituto Nacional de Rehabilitación "Luis Guillermo Ibarra Ibarra"</em>
+
+<span>Patología nasosinusal compleja. Investigador principal en ensayo clínico internacional. Profesor en residencia de ORL. Asesor de tesis.</span>
+
+</div>
+</div>
+<div class="cv-entry">
+<span class="cv-yr">2023 – 2024</span>
+<div class="cv-body">
+<strong>Research Assistant</strong>
+<em>St. Paul's Sinus Centre · BC CDC · SPPH, UBC</em>
+<span>Ensayo clínico aleatorizado sobre trasplante de microbiota nasosinusal. Estudios de medicina traslacional y revisiones sistemáticas.</span>
+
+</div>
+</div>
+<div class="cv-entry">
+<span class="cv-yr">2020 – 2022</span>
+<div class="cv-body">
+<strong>Research Fellow</strong>
+<em>University of British Columbia</em>
+<span>Proyecto piloto de trasplante de microbiota nasosinusal: planeación, ejecución y publicación.</span>
+
+</div>
+</div>
+<div class="cv-entry">
+<span class="cv-yr">2020</span>
+<div class="cv-body">
+<strong>Práctica Privada</strong>
+
+<em>ORL y Cirugía de Cabeza y Cuello · Ciudad de México</em>
+
+</div>
+</div>
+</div>
+<div class="cv-section">
+<h3>Docencia destacada</h3>
+
+<div class="cv-rule"></div>
+<div class="cv-entry">
+<span class="cv-yr">2025 – Actual</span>
+
+<div class="cv-body">
+<strong>Profesor de ORL · INR / Universidad La Salle</strong>
+
+<em>Residencia de ORL (16 residentes) y pregrado</em>
+
+</div>
+</div>
+<div class="cv-entry">
+<span class="cv-yr">2025</span>
+<div class="cv-body">
+<strong>Profesor invitado · Sociedad ORL Austro</strong>
+
+<em>Cuenca, Ecuador</em>
+</div>
+</div>
+<div class="cv-entry">
+<span class="cv-yr">2023</span>
+<div class="cv-body">
+<strong>Profesor adjunto · Curso FESS en Cadáver</strong>
+
+<em>Sociedad de ORL de Uganda · Kampala</em>
+
+</div>
+</div>
+</div>
+<div class="cv-section">
+<h3>Sociedades Profesionales</h3>
+
+<div class="cv-rule"></div>
+<div class="societies-list">
+<div class="soc-item">American Rhinologic Society <span style="font-size:.72rem;color:var(--muted)">(International Fellow · 2023–)</span></div>
+<div class="soc-item">European Rhinologic Society <span style="font-size:.72rem;color:var(--muted)">(Member · 2023–)</span></div>
+<div class="soc-item">Consejo Mexicano de ORL y Cirugía de Cabeza y Cuello (2020–)</div>
+
+<div class="soc-item">Sociedad Mexicana de ORL y Cirugía de Cabeza y Cuello (2020–)</div>
+
+</div>
+</div>
+<div class="cv-section">
+<h3>Perfiles académicos</h3>
+
+<div class="cv-rule"></div>
+<p style="font-size:.83rem; margin-bottom:1.2rem">Mis publicaciones completas están disponibles en Google Scholar y PubMed.</p>
+
+<div class="profiles-row">
+<a class="profile-link sky" href="https://scholar.google.com/citations?user=w6OdhTkAAAAJ&amp;hl=en" rel="noopener" target="_blank">↗ Google Scholar</a>
+<a class="profile-link" href="https://pubmed.ncbi.nlm.nih.gov/?term=Hernaiz-Leonardo+JC" rel="noopener" target="_blank">↗ PubMed</a>
+<a class="profile-link" href="https://www.researchgate.net/profile/Juan-Hernaiz" rel="noopener" target="_blank">↗ ResearchGate</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ══════════════════════════════════════
+     PAGE: VIDEOS
+══════════════════════════════════════ -->
+<div class="page" id="page-videos">
+<div class="container">
+<span class="stag">Canal educativo</span>
+
+<h2>Videos &amp; Educación</h2>
+
+<div class="rule"></div>
+<div class="yt-cta-row">
+<a class="yt-btn" href="https://www.youtube.com/@dr.hernaizspn" rel="noopener" target="_blank">▶ <span>Ver canal en YouTube</span></a>
+</div>
+<div class="vids-grid">
+<div class="vid-card">
+<div class="vid-wrap">
+<iframe allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/HS9_WNr_pNg" title="How to use the SiNES system"></iframe>
+</div>
+<div class="vid-cap">
+<h4>Cómo usar el sistema SiNES</h4>
+
+<p>Demostración práctica del SiNonasal Endoscopic Score (SiNES) durante una endoscopía sinonasal estándar.</p>
+
+</div>
+</div>
+<div class="vid-card">
+<div class="vid-wrap">
+<iframe allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/gOfth4gVorY" title="Transpterygoid approach for a sphenoid meningoencephalocele"></iframe>
+</div>
+<div class="vid-cap">
+<h4>Abordaje transpterigoides para meningoencefalocele esfenoidal</h4>
+
+<p>Cirugía endoscópica de base de cráneo: abordaje transpterigoides para la reparación de un meningoencefalocele esfenoidal.</p>
+
+</div>
+</div>
+<div class="vid-card">
+<div class="vid-wrap">
+<iframe allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/U69_R9j396g" title="Septal perforation repair"></iframe>
+</div>
+<div class="vid-cap">
+<h4>Reparación de perforación septal</h4>
+
+<p>Técnica quirúrgica para la reparación de perforación del tabique nasal.</p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ══════════════════════════════════════
+     PAGE: SINES
+══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     PAGE: FAQ
+══════════════════════════════════════ -->
+<div class="page" id="page-faq">
+<div class="container">
+<span class="stag">Cirugía de senos paranasales</span>
+
+<h2>Preguntas Frecuentes</h2>
+
+<div class="rule"></div>
+<div class="faq-intro">
+<p>Información sobre la cirugía endoscópica de senos paranasales (CESPN): qué esperar antes, durante y después del procedimiento.</p>
+
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" onclick="toggleFaq(this)">
+<span>¿Qué es la Cirugía Endoscópica de Senos Paranasales (CESPN)?</span>
+
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">
+<span>La CESPN es un procedimiento que busca ampliar los orificios de drenaje natural de los senos paranasales. La cirugía se realiza bajo anestesia general utilizando equipo de endoscopía que se introduce por la fosa nasal. No implica ningún tipo de cicatriz externa y no modifica la forma de la nariz.
+<br/><br/>Los objetivos principales de la CESPN son: (i) mejorar el drenaje natural de los senos paranasales; (ii) remover cualquier tipo de tejido inflamado; y (iii) optimizar la cavidad nasal para el uso de tratamientos tópicos (por ejemplo, lavados nasales con antiinflamatorios).
+<br/><br/>Es importante entender que la CESPN no necesariamente "cura" la sinusitis crónica, pero sí permite que los tratamientos médicos funcionen mejor. Algunos pacientes, especialmente aquellos con pólipos nasales, requerirán revisiones periódicas para controlar la inflamación y prevenir recurrencias.</span>
+
+</div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" onclick="toggleFaq(this)">
+<span>¿Qué riesgos tiene la CESPN?</span>
+
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">
+<span>Todo procedimiento quirúrgico conlleva riesgos potenciales. En el caso de la CESPN, la complicación más común es el sangrado postoperatorio, el cual suele ser mínimo. Las complicaciones mayores son raras (aproximadamente 1 en 10,000 casos).
+<br/><br/>Las complicaciones potenciales que debes conocer son las lesiones al globo ocular y a la base del cráneo. Ambas se detectan y resuelven durante la cirugía. Las lesiones a estructuras neurovasculares importantes (ej. arteria carótida, nervios craneales) son extremadamente raras.</span>
+
+</div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" onclick="toggleFaq(this)">
+<span>¿Qué indicaciones debo seguir antes de mi cirugía?</span>
+
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">
+<span>Dependiendo del caso, es posible que te indique medicamentos (antibióticos, antiinflamatorios, etc.) una semana antes. Si tomas anticoagulantes (aspirina, clopidogrel, warfarina), infórmalo con anticipación — puede ser necesario suspenderlos bajo supervisión médica. También debes suspender multivitamínicos y suplementos (jengibre, ginkgo biloba, omega-3, etc.) por su efecto anticoagulante leve. Los medicamentos para enfermedades crónicas (diabetes, hipertensión) no se suspenden.
+<br/><br/>El día de tu cirugía aplica dos disparos de <strong>Afrin® spray nasal</strong> en cada fosa nasal al despertar. En el hospital, repite dos disparos cada 30 minutos hasta pasar a quirófano. Llega al menos una hora antes, siempre acompañado de una persona responsable.</span>
+
+</div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" onclick="toggleFaq(this)">
+<span>¿Qué molestias debo esperar después de la cirugía?</span>
+
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">
+<span>La CESPN es ambulatoria — te vas a casa el mismo día. Causa mínimo dolor y es bien tolerada. Es normal sentir moco con sangre los primeros días; en caso de sangrado leve puedes aplicar Afrin.
+<br/><br/>Las molestias más comunes durante la primera semana son: congestión nasal, disminución del olfato, presión facial, febrícula (37.0–37.8°C) y cansancio. Se deben a un par de esponjas dentro de los senos que se retiran la primera semana. Estas esponjas <strong>NO son tapones nasales</strong> — podrás respirar normalmente.
+<br/><br/><span class="faq-alert">⚠ <strong>DATOS DE ALARMA:</strong> Si presentas sangrado intenso, fiebre mayor a 38.5°C, dolor de cabeza muy intenso, aumento de volumen en los ojos o visión doble — acude a urgencias y comunícate urgentemente con el Dr. Hernaiz.</span></span>
+
+</div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" onclick="toggleFaq(this)">
+<span>¿Qué cuidados debo tener después de la CESPN?</span>
+
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">
+<span>Evita ejercicio intenso y sonarte la nariz los primeros 7–10 días. No introduzcas objetos en la nariz ni jales suturas. Sigue tu dieta normal pero evita alimentos muy irritantes o grasos la primera semana.
+<br/><br/>Realiza lavados nasales con el sistema <strong>Sinus Rinse®</strong> con solución salina y budesonida 0.5 mg/ml: <strong>tres veces al día</strong> la primera semana, <strong>dos veces al día</strong> la semana siguiente a la retirada de esponjas y, finalmente, <strong>una vez al día</strong> hasta nueva indicación. Las infecciones postoperatorias son extremadamente raras — no se requieren antibióticos.</span>
+
+</div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" onclick="toggleFaq(this)">
+<span>¿Cuándo debo acudir para mi cita postoperatoria?</span>
+
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">
+<span>Te valoraré <strong>una semana después de la cirugía</strong> para retirar las esponjas y los coágulos. Esta cita puede ser algo molesta, por lo que te recomiendo tomar <strong>1 tableta de Tramacet® 30 minutos antes</strong>.
+<br/><br/>Las siguientes consultas dependerán de tu evolución y generalmente no requieren premedicación.</span>
+
+</div>
+</div>
+</div>
+</div>
+</div><!-- /#page-faq -->
+<!-- ══════════════════════════════════════
+     PAGE: RESOURCES
+══════════════════════════════════════ -->
+<div class="page" id="page-resources">
+<div class="container">
+<span class="stag">Materiales para el paciente</span>
+
+<h2>Recursos para Pacientes</h2>
+
+<div class="rule"></div>
+<div class="res-intro">
+<p>Descarga los instructivos y guías que el Dr. Hernaiz entrega a sus pacientes. Cada documento está diseñado para que puedas seguir tu tratamiento de forma sencilla y segura en casa.</p>
+
+</div>
+<div class="res-grid">
+<div class="res-card">
+<div class="res-card-head">
+<div class="res-card-icon">🐟</div>
+<div class="res-card-head-text">
+<span class="res-card-category">Tratamiento · EREA</span>
+
+<div class="res-card-title">Dieta Omega-3 / Omega-6 para EREA</div>
+
+</div>
+</div>
+<div class="res-card-body">
+<p class="res-card-desc">Guía de alimentación antiinflamatoria: alimentos recomendados, permitidos en pequeñas cantidades y a evitar. Meta: 3 g/día de omega-3, 4 g/día de omega-6.</p>
+
+</div>
+<div class="res-card-footer">
+<a class="res-dl-btn" download="" href="dieta_erea.pdf">
+<span class="dl-icon">⬇</span>
+<span>Descargar PDF</span>
+
+</a>
+</div>
+</div>
+<div class="res-card">
+<div class="res-card-head">
+<div class="res-card-icon">🌸</div>
+<div class="res-card-head-text">
+<span class="res-card-category">Olfato · Rehabilitación</span>
+
+<div class="res-card-title">Rehabilitación olfatoria</div>
+
+</div>
+</div>
+<div class="res-card-body">
+<p class="res-card-desc">Protocolo de 12 semanas con 4 aceites esenciales (rosa, eucalipto, clavo, limón). Dos sesiones de 2 min 40 s al día + suplemento omega-3.</p>
+
+</div>
+<div class="res-card-footer">
+<a class="res-dl-btn" download="" href="entrenamiento_olfatorio.pdf">
+<span class="dl-icon">⬇</span>
+<span>Descargar PDF</span>
+
+</a>
+</div>
+</div>
+<div class="res-card">
+<div class="res-card-head">
+<div class="res-card-icon">💊</div>
+<div class="res-card-head-text">
+<span class="res-card-category">Medicamento · Técnica</span>
+
+<div class="res-card-title">Uso de esteroides intranasales</div>
+
+</div>
+</div>
+<div class="res-card-body">
+<p class="res-card-desc">Instrucciones paso a paso para aplicar fluticasona, mometasona u otro esteroide nasal correctamente, y recomendaciones de seguridad.</p>
+
+</div>
+<div class="res-card-footer">
+<a class="res-dl-btn" download="" href="esteroide_nasal.pdf">
+<span class="dl-icon">⬇</span>
+<span>Descargar PDF</span>
+
+</a>
+</div>
+</div>
+<div class="res-card">
+<div class="res-card-head">
+<div class="res-card-icon">🧴</div>
+<div class="res-card-head-text">
+<span class="res-card-category">Lavados · Isodine</span>
+
+<div class="res-card-title">Irrigación con Isodine (iodopovidona 10%)</div>
+
+</div>
+</div>
+<div class="res-card-body">
+<p class="res-card-desc">Preparación de la solución y técnica de irrigación nasal con iodopovidona al 10% usando la botella Neilmed Sinus Rinse.</p>
+
+</div>
+<div class="res-card-footer">
+<a class="res-dl-btn" download="" href="lavados_yodopovidona.pdf">
+<span class="dl-icon">⬇</span>
+<span>Descargar PDF</span>
+
+</a>
+</div>
+</div>
+<div class="res-card">
+<div class="res-card-head">
+<div class="res-card-icon">💉</div>
+<div class="res-card-head-text">
+<span class="res-card-category">Medicamento · PMAD</span>
+
+<div class="res-card-title">Aplicación de Pulmicort con atomizador (PMAD)</div>
+
+</div>
+</div>
+<div class="res-card-body">
+<p class="res-card-desc">Instrucciones completas de carga y aplicación del atomizador de mucosa (MAD) con budesonida, posición de cabeza colgante e instrucciones de limpieza.</p>
+
+</div>
+<div class="res-card-footer">
+<a class="res-dl-btn" download="" href="pulmicort_atomizador.pdf">
+<span class="dl-icon">⬇</span>
+<span>Descargar PDF</span>
+
+</a>
+</div>
+</div>
+<div class="res-card">
+<div class="res-card-head">
+<div class="res-card-icon">🚿</div>
+<div class="res-card-head-text">
+<span class="res-card-category">Lavados · Sinus Rinse</span>
+
+<div class="res-card-title">Uso del Sinus Rinse (NeilMed)</div>
+
+</div>
+</div>
+<div class="res-card-body">
+<p class="res-card-desc">Cómo preparar y usar la botella NeilMed con solución salina para irrigación nasal. Incluye posición, técnica e higiene del equipo.</p>
+
+</div>
+<div class="res-card-footer">
+<a class="res-dl-btn" download="" href="sinus_rinse.pdf">
+<span class="dl-icon">⬇</span>
+<span>Descargar PDF</span>
+
+</a>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /#page-resources -->
+<div class="page" id="page-sines">
+<div class="container">
+<div class="sines-intro">
+<span class="stag">Herramienta clínica validada</span>
+
+<h2>Calculadora SiNES</h2>
+
+<div class="rule"></div>
+<p>El SiNonasal Endoscopic Score evalúa cinco sitios anatómicos en tres subdominios: edema, secreción y cicatriz. Calcular por separado para cada lado.</p>
+
+<div class="formula-box">TOTAL SiNES = Edema<sub>media</sub> + Secreción<sub>media</sub> + Cicatriz<sub>media</sub> + Extensión de pólipos</div>
+
+</div>
+<div class="sines-layout">
+<div>
+<div class="tbl-wrap">
+<table class="st" id="sinesTable">
+<thead>
+<tr>
+<th>Sitio anatómico</th>
+<th>Edema (0–4)</th>
+<th>Secreción (0–3)</th>
+<th>Cicatriz (0–1)</th>
+<th>N/A</th>
+</tr>
+</thead>
+<tbody id="calcBody"></tbody>
+</table>
+</div>
+<div class="polyp-block">
+<span class="pb-title">Extensión de pólipos nasales — cavidad completa</span>
+
+<div class="polyp-opts">
+<label id="polyp-label-0"><input checked="" name="polyp" type="radio" value="0"/>
+<span>Nivel 0 <span class="pts">(+0)</span> — Pólipos pequeños, sin alcanzar borde inferior del cornete medio</span>
+
+</label>
+<label id="polyp-label-1"><input name="polyp" type="radio" value="1"/>
+<span>Nivel I <span class="pts">(+1)</span> — Alcanzan borde inferior del cornete medio</span>
+
+</label>
+<label id="polyp-label-2"><input name="polyp" type="radio" value="2"/>
+<span>Nivel II <span class="pts">(+2)</span> — Alcanzan borde inferior del cornete inferior</span>
+
+</label>
+<label id="polyp-label-3"><input name="polyp" type="radio" value="3"/>
+<span>Nivel III <span class="pts">(+3)</span> — Obstruyen completamente la cavidad nasal</span>
+
+</label>
+</div>
+<div class="polyp-lock-notice" id="polypLockNotice">
+<span>⚠ Niveles I–III requieren al menos un sitio con edema grado 4 (pólipos formados).</span>
+
+</div>
+</div>
+<div class="ref-note">
+          Hernaiz-Leonardo JC, et al. "Development and validation of the Sinonasal Endoscopic Score (SiNES) for chronic rhinosinusitis." <em>Rhinology</em> 62:4, 2024.
+          <a href="https://doi.org/10.4193/Rhin23.434" rel="noopener" target="_blank">DOI: 10.4193/Rhin23.434</a>
+</div>
+</div>
+<div>
+<div class="res-panel">
+<div class="rp-title">Resultado SiNES</div>
+
+<div class="rp-sub">Ingresa los valores y presiona "Calcular".</div>
+
+<div class="score-big">
+<span class="score-val" id="rTotal">—</span>
+<span class="score-max">/ máx. ~11 pts por lado</span>
+
+</div>
+<div class="sub-grid">
+<div class="sub-cell"><span class="sv" id="rEdema">—</span><span class="sl">Edema</span></div>
+<div class="sub-cell"><span class="sv" id="rDisc">—</span><span class="sl">Secreción</span></div>
+<div class="sub-cell"><span class="sv" id="rScar">—</span><span class="sl">Cicatriz</span></div>
+<div class="sub-cell"><span class="sv" id="rPoly">—</span><span class="sl">Pólipos</span></div>
+</div>
+<div class="sev-bar">
+<div class="sev-labels">
+<span>Sin inflamación</span>
+<span>Severo</span>
+</div>
+<div class="sev-track"><div class="sev-fill" id="sevFill" style="width:0%"></div></div>
+<div class="sev-text" id="sevText"></div>
+</div>
+<button class="calc-go" onclick="calcSiNES()">
+<span>Calcular SiNES</span>
+</button>
+<button class="calc-rst" onclick="resetSiNES()">
+<span>Reiniciar</span>
+</button>
+</div>
+</div>
+</div><!-- /.sines-layout -->
+<!-- ── SCORE CONVERSIONS ── -->
+<div class="conv-section" id="conversionSection" style="display:none">
+<h3 class="conv-section-title">Conversión a otros sistemas de puntuación</h3>
+
+<p class="conv-section-sub">
+        Basado en la tabla de equivalencias del artículo de validación del SiNES (Hernaiz-Leonardo et al., <em>Rhinology</em> 2024).
+        <strong> Nota: se utiliza el valor más alto entre los cinco sitios evaluados para la conversión, según indica la tabla.</strong>
+</p>
+
+<div class="conv-grid">
+<!-- MLK -->
+<div class="conv-card">
+<div class="conv-card-head mlk">
+<span class="conv-card-name">MLK</span>
+<span class="conv-card-full">Modified Lund-Kennedy</span>
+
+</div>
+<div id="mlk-content">
+<div class="conv-na">Presiona Calcular para ver la conversión</div>
+
+</div>
+</div>
+<!-- NPS -->
+<div class="conv-card">
+<div class="conv-card-head nps">
+<span class="conv-card-name">NPS</span>
+<span class="conv-card-full">Nasal Polyp Score</span>
+
+</div>
+<div id="nps-content">
+<div class="conv-na">Presiona Calcular para ver la conversión</div>
+
+</div>
+</div>
+<!-- DIP -->
+<div class="conv-card">
+<div class="conv-card-head dip">
+<span class="conv-card-name">DIP</span>
+<span class="conv-card-full">Discharge, Inflammation &amp; Polyps</span>
+
+</div>
+<div id="dip-content">
+<div class="conv-na">Presiona Calcular para ver la conversión</div>
+
+</div>
+</div>
+</div>
+</div><!-- /.conv-section -->
+</div><!-- /.container -->
+</div><!-- /#page-sines -->
+<!-- ══════════════════════════════════════
+     PAGE: CONTACT
+══════════════════════════════════════ -->
+<div class="page" id="page-contact">
+<div class="container">
+<span class="stag">Agenda tu consulta</span>
+
+<h2>Contacto</h2>
+
+<div class="rule"></div>
+<div class="contact-layout">
+<!-- LEFT: contact details -->
+<div class="contact-info-col">
+<h3>Información de contacto</h3>
+
+<div class="cinfo-rule"></div>
+<div class="cinfo-item">
+<span class="cinfo-icon">📍</span>
+<div>
+<strong>Consultorio</strong>
+
+<span>Hospital Ángeles Pedregal</span>
+<span>Torre de Consultorios (Torre del Starbucks)<br/>Piso 1, Consultorio 129<br/>Camino a Santa Teresa No. 1055<br/>Col. Héroes de Padierna<br/>Alcaldía Magdalena Contreras, CDMX · CP 10700</span>
+
+</div>
+</div>
+<div class="cinfo-item">
+<span class="cinfo-icon">📞</span>
+<div>
+<strong>Teléfono / WhatsApp</strong>
+
+<a href="tel:+525619903163">+52 56 1990 3163</a>
+</div>
+</div>
+<div class="cinfo-item">
+<span class="cinfo-icon">✉️</span>
+<div>
+<strong>Correo electrónico</strong>
+
+<a href="/cdn-cgi/l/email-protection#8de5e8ffe3ece4f7a3e7eecdeae0ece4e1a3eee2e0"><span class="__cf_email__" data-cfemail="c0a8a5b2aea1a9baeeaaa380a7ada1a9aceea3afad">[email protected]</span></a>
+<a href="/cdn-cgi/l/email-protection#167c7e736478777f6c567f786438717974387b6e"><span class="__cf_email__" data-cfemail="b8d2d0ddcad6d9d1c2f8d1d6ca96dfd7da96d5c0">[email protected]</span></a>
+</div>
+</div>
+<div class="cinfo-item">
+<span class="cinfo-icon">🔗</span>
+<div>
+<strong>Perfiles académicos</strong>
+
+<span>
+<a href="https://scholar.google.com/citations?user=w6OdhTkAAAAJ&amp;hl=en" rel="noopener" target="_blank">Google Scholar</a>
+               · 
+              <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Hernaiz-Leonardo+JC" rel="noopener" target="_blank">PubMed</a>
+               · 
+              <a href="https://www.researchgate.net/profile/Juan-Hernaiz" rel="noopener" target="_blank">ResearchGate</a>
+</span>
+</div>
+</div>
+<div class="cinfo-item">
+<span class="cinfo-icon">▶</span>
+<div>
+<strong>YouTube</strong>
+<a href="https://www.youtube.com/@dr.hernaizspn" rel="noopener" target="_blank">@dr.hernaizspn</a>
+</div>
+</div>
+<div class="cinfo-map">
+<span class="cm-icon">🏥</span>
+<p><strong>Hospital Ángeles Pedregal</strong><br/>Camino a Santa Teresa 1055, CDMX</p>
+
+<a class="map-btn" href="https://maps.google.com/?q=Hospital+Ángeles+Pedregal+Camino+Santa+Teresa+1055+Ciudad+de+Mexico" rel="noopener" target="_blank">
+<span>Ver en Google Maps →</span>
+
+</a>
+</div>
+</div>
+<!-- RIGHT: message form -->
+<div class="contact-form-col">
+<h3>Envíame un mensaje</h3>
+
+<div class="cinfo-rule"></div>
+<p style="font-size:.85rem;margin-bottom:1.8rem;color:var(--muted)">¿Tienes una pregunta sobre rinología, el sistema SiNES u otro tema clínico o de investigación? Escríbeme y te responderé a la brevedad.</p>
+
+<div class="form-group">
+<label for="msgSubject">
+<span>Asunto</span>
+
+</label>
+<input id="msgSubject" maxlength="120" oninput="validateForm()" type="text"/>
+<p class="form-hint">Breve título de tu mensaje (máx. 120 caracteres).</p>
+
+</div>
+<div class="form-group">
+<label for="msgBody">
+<span>Mensaje</span>
+
+</label>
+<textarea id="msgBody" maxlength="1500" oninput="updateCharCount(); validateForm()"></textarea>
+<div class="char-counter" id="charCounter">
+<span id="charCount">0</span> / 1500
+            <span> caracteres (~250 palabras)</span>
+
+</div>
+<p class="form-hint">Por favor sé conciso. Para urgencias clínicas, llama directamente por teléfono.</p>
+
+</div>
+<button class="form-send-btn" disabled="" id="sendBtn" onclick="sendMessage()">
+<span>✉</span>
+<span>Enviar mensaje</span>
+
+</button>
+<div class="form-notice info" id="formNotice" style="display:none">
+<span>✓ Se ha abierto tu cliente de correo con el mensaje listo para enviar.</span>
+
+</div>
+<p style="font-size:.68rem;color:var(--muted);margin-top:1.2rem;line-height:1.65">
+          Al presionar "Enviar mensaje" se abrirá tu cliente de correo (Gmail, Outlook, etc.) con el mensaje ya redactado, listo para enviarse a <strong><a class="__cf_email__" data-cfemail="a5cdc0d7cbc4ccdf8bd6d5cbe5c2c8c4ccc98bc6cac8" href="/cdn-cgi/l/email-protection">[email protected]</a></strong>.
+        </p>
+
+</div>
+</div>
+</div>
+</div><!-- /#page-contact -->
+<footer>
+<div style="display:flex;align-items:center;gap:.9rem;">
+<svg fill="none" height="25" viewbox="0 0 100 88" width="28">
+<path d="M68 10 A40 40 0 1 0 68 78" fill="none" stroke="#00aad2" stroke-linecap="round" stroke-width="9"></path>
+<line stroke="#003c6e" stroke-linecap="round" stroke-width="7.5" x1="50" x2="50" y1="28" y2="60"></line>
+<line stroke="#003c6e" stroke-linecap="round" stroke-width="7.5" x1="38" x2="62" y1="60" y2="60"></line>
+<path d="M76 32 Q98 44 76 58" fill="none" stroke="#003c6e" stroke-linecap="round" stroke-width="7.5"></path>
+</svg>
+<p>Dr. Juan Carlos Hernaiz Leonardo · Otorrinolaringología · CDMX</p>
+
+</div>
+<p>© 2025</p>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  /* ── NAVIGATION ── */
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav.tabs button').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  /* ── SINES CALCULATOR ── */
+  const sitesData = {
+    es: ['Surco olfatorio (OC)', 'Seno frontal', 'Seno etmoidal', 'Seno esfenoidal', 'Seno maxilar'],
+    en: ['Olfactory cleft (OC)', 'Frontal sinus', 'Ethmoid sinus', 'Sphenoid sinus', 'Maxillary sinus']
+  };
+  const edemaOpts = {
+    es: ['0 — Sin edema','1 — Edema leve','2 — Moderado / severo','3 — Polipoide','4 — Pólipos formados'],
+    en: ['0 — No edema','1 — Mild edema','2 — Moderate / severe','3 — Polypoid edema','4 — Fully formed polyps']
+  };
+  const discOpts = {
+    es: ['0 — Sin secreción','1 — Secreción clara','2 — Pus leve / mucina','3 — Pus / mucina mod-severo'],
+    en: ['0 — No discharge','1 — Clear secretion','2 — Mild pus / mucin','3 — Mod-severe pus / mucin']
+  };
+  const scarOpts = {
+    es: ['0 — No','1 — Sí'],
+    en: ['0 — No','1 — Yes']
+  };
+  const keys = ['oc','frontal','ethmoid','sphenoid','maxillary'];
+
+  function buildSinesTable() {
+    const tbody = document.getElementById('calcBody');
+    tbody.innerHTML = '';
+    const lang = 'es';
+    const mkSel = (id, opts, style) =>
+      `<select class="csel" id="${id}" ${style||''}>${opts.map((t,i)=>`<option value="${i}">${t}</option>`).join('')}</select>`;
+    const mkEdema = (id, opts) =>
+      `<select class="csel" id="${id}" oninput="validatePolypExtension()">${opts.map((t,i)=>`<option value="${i}">${t}</option>`).join('')}</select>`;
+    keys.forEach((key, i) => {
+      const tr = document.createElement('tr');
+      tr.id = `row-${key}`;
+      tr.innerHTML = `
+        <td class="site-label" data-key="${key}">${sitesData[lang][i]}</td>
+        <td>${mkEdema(`e-${key}`, edemaOpts[lang])}</td>
+        <td>${mkSel(`d-${key}`, discOpts[lang])}</td>
+        <td>${mkSel(`s-${key}`, scarOpts[lang], 'style="width:auto"')}</td>
+        <td><input type="checkbox" class="cchk" id="na-${key}" onchange="toggleNA('${key}')"/><span class="na-note">N/A</span></td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function toggleNA(k) {
+    const na = document.getElementById(`na-${k}`).checked;
+    document.getElementById(`row-${k}`).classList.toggle('row-na', na);
+    [`e-${k}`,`d-${k}`,`s-${k}`].forEach(id => document.getElementById(id).disabled = na);
+    validatePolypExtension();
+  }
+
+  function validatePolypExtension() {
+    // Check if ANY non-N/A site has edema grade 4 (fully formed polyps)
+    const anyPolyp = keys.some(k => {
+      const naEl = document.getElementById(`na-${k}`);
+      const eEl  = document.getElementById(`e-${k}`);
+      return naEl && !naEl.checked && eEl && +eEl.value === 4;
+    });
+
+    const notice = document.getElementById('polypLockNotice');
+    [1, 2, 3].forEach(v => {
+      const lbl   = document.getElementById(`polyp-label-${v}`);
+      const radio = lbl ? lbl.querySelector('input[type="radio"]') : null;
+      if (!lbl || !radio) return;
+
+      if (anyPolyp) {
+        // Unlock: enable and remove greyed styling
+        lbl.classList.remove('polyp-locked');
+        radio.disabled = false;
+      } else {
+        // Lock: disable and visually grey out
+        lbl.classList.add('polyp-locked');
+        radio.disabled = true;
+        // If one of the locked options was selected, reset to Level 0
+        if (radio.checked) {
+          radio.checked = false;
+          document.querySelector('input[name="polyp"][value="0"]').checked = true;
+        }
+      }
+    });
+
+    // Show/hide explanatory notice
+    if (notice) notice.classList.toggle('visible', !anyPolyp);
+  }
+
+  function calcSiNES() {
+    const lang = 'es';
+    let e=[], d=[], s=[];
+    keys.forEach(k => {
+      if (!document.getElementById(`na-${k}`).checked) {
+        e.push(+document.getElementById(`e-${k}`).value);
+        d.push(+document.getElementById(`d-${k}`).value);
+        s.push(+document.getElementById(`s-${k}`).value);
+      }
+    });
+    if (!e.length) {
+      alert(lang === 'en' ? 'All sites are marked as N/A.' : 'Todos los sitios están marcados como N/A.');
+      return;
+    }
+    const mean = a => a.reduce((x,y) => x+y, 0) / a.length;
+    const polyp = +document.querySelector('input[name="polyp"]:checked').value;
+    const em=mean(e), dm=mean(d), sm=mean(s), total=em+dm+sm+polyp;
+    document.getElementById('rTotal').textContent = total.toFixed(1);
+    document.getElementById('rEdema').textContent = em.toFixed(2);
+    document.getElementById('rDisc').textContent  = dm.toFixed(2);
+    document.getElementById('rScar').textContent  = sm.toFixed(2);
+    document.getElementById('rPoly').textContent  = polyp;
+    document.getElementById('sevFill').style.width = Math.min(total/11*100, 100) + '%';
+    const lbl = document.getElementById('sevText');
+    const sevLabels = {
+      es: ['Sin inflamación significativa','Inflamación leve','Inflamación moderada','Inflamación severa'],
+      en: ['No significant inflammation','Mild inflammation','Moderate inflammation','Severe inflammation']
+    };
+    const classes = ['sev-none','sev-mild','sev-moderate','sev-severe'];
+    let idx = total < 2 ? 0 : total < 4 ? 1 : total < 7 ? 2 : 3;
+    lbl.textContent = sevLabels[lang][idx];
+    lbl.className = 'sev-text ' + classes[idx];
+
+    // ── SCORE CONVERSIONS ──
+    renderConversions(e, d, polyp, lang);
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // Conversion logic (Table 3, Hernaiz-Leonardo et al. Rhinology 2024)
+  // Per table footnote: use the HIGHEST score across all accessible sites.
+  // ─────────────────────────────────────────────────────────────────────────
+  function renderConversions(eVals, dVals, polyp, lang) {
+    const maxE = Math.max(...eVals);  // highest edema across sites
+    const maxD = Math.max(...dVals);  // highest discharge across sites
+
+    // ── MLK ──────────────────────────────────────────────────────────────
+    // Edema:     SiNES 0→0(Absent)  1→1(Mild)  2→2(Severe)  3→2  4→2
+    // Discharge: SiNES 0→0  1→1(Clear)  2→2(Purulent)  3→2
+    // Polyp:     Level 0 & edema≤3 → 0 | Level 0 & edema=4 → 1 | Level I/II/III → 2
+    const mlkEdemaMap = [0, 1, 2, 2, 2];
+    const mlkDiscMap  = [0, 1, 2, 2];
+    const mlkE = mlkEdemaMap[maxE];
+    const mlkD = mlkDiscMap[maxD];
+    let mlkP;
+    if      (polyp === 0 && maxE < 4)  mlkP = 0;
+    else if (polyp === 0 && maxE >= 4) mlkP = 1;
+    else                               mlkP = 2;  // Level I, II, III → 2
+    const mlkTotal = mlkE + mlkD + mlkP;
+
+    const mlkEdemaLabels = {
+      es: ['Ausente','Leve','Severo'],
+      en: ['Absent','Mild','Severe']
+    };
+    const mlkDiscLabels = {
+      es: ['Sin secreción','Clara / delgada','Gruesa / purulenta'],
+      en: ['No discharge','Clear / thin','Thick / purulent']
+    };
+    const mlkPolypLabels = {
+      es: ['Ausente','Dentro del meato medio','Más allá del meato medio'],
+      en: ['Absent','Within middle meatus','Beyond middle meatus']
+    };
+
+    document.getElementById('mlk-content').innerHTML = `
+      <div class="conv-score-display">
+        <span class="conv-score-big">${mlkTotal}</span>
+        <span class="conv-score-max">/ 6</span>
+      </div>
+      <div class="conv-breakdown">
+        <div class="conv-row">
+          <span class="cr-label"><span class="es">Edema</span><span class="en">Edema</span></span>
+          <span class="cr-val">${mlkE} &nbsp;<small style="font-weight:300;font-size:.68rem;color:var(--muted)">${mlkEdemaLabels[lang][mlkE]}</small></span>
+        </div>
+        <div class="conv-row">
+          <span class="cr-label"><span class="es">Secreción</span><span class="en">Discharge</span></span>
+          <span class="cr-val">${mlkD} &nbsp;<small style="font-weight:300;font-size:.68rem;color:var(--muted)">${mlkDiscLabels[lang][mlkD]}</small></span>
+        </div>
+        <div class="conv-row">
+          <span class="cr-label"><span class="es">Pólipos</span><span class="en">Polyps</span></span>
+          <span class="cr-val">${mlkP} &nbsp;<small style="font-weight:300;font-size:.68rem;color:var(--muted)">${mlkPolypLabels[lang][mlkP]}</small></span>
+        </div>
+      </div>`;
+
+    // ── NPS ──────────────────────────────────────────────────────────────
+    // Level 0 & edema<4  → Grade 0
+    // Level 0 & edema=4  → Grade 1  (NPS ≥ 1)
+    // Level I            → Grade 2
+    // Level II           → Grade 3
+    // Level III          → Grade 4
+    let npsGrade;
+    if      (polyp === 0 && maxE < 4)  npsGrade = 0;
+    else if (polyp === 0 && maxE >= 4) npsGrade = 1;
+    else                               npsGrade = polyp + 1;  // I→2, II→3, III→4
+
+    const npsDescs = {
+      es: [
+        'Sin pólipos',
+        'Pólipos pequeños en el meato medio',
+        'Pólipos que alcanzan el borde inferior del cornete medio',
+        'Pólipos que alcanzan el borde inferior del cornete inferior',
+        'Pólipos que obstruyen completamente la cavidad nasal'
+      ],
+      en: [
+        'No polyps',
+        'Small polyps in middle meatus',
+        'Polyps reaching lower border of middle turbinate',
+        'Polyps reaching lower border of inferior turbinate',
+        'Polyps causing complete nasal obstruction'
+      ]
+    };
+
+    let dotsHtml = '';
+    for (let i=0; i<4; i++) {
+      dotsHtml += `<div class="conv-nps-dot${i < npsGrade ? ' filled' : ''}"></div>`;
+    }
+
+    document.getElementById('nps-content').innerHTML = `
+      <div class="conv-nps-grade">
+        <div class="conv-score-display" style="padding:1.2rem 0 .4rem">
+          <span class="conv-score-big">${npsGrade}</span>
+          <span class="conv-score-max">/ 4 &nbsp;(<span class="es">Grado</span><span class="en">Grade</span> ${npsGrade})</span>
+        </div>
+        <div class="conv-nps-bar">${dotsHtml}</div>
+        <div class="conv-nps-label"><span class="es">Grado</span><span class="en">Grade</span> ${npsGrade}</div>
+        <div class="conv-nps-desc">${npsDescs[lang][npsGrade]}</div>
+      </div>`;
+
+    // ── DIP ──────────────────────────────────────────────────────────────
+    // Inflammation: SiNES edema 0→0  1→3  2→5  3→10  4→10
+    // Discharge:    SiNES disc  0→0  1→5  2→10  3→10
+    // Polyp/Edema (combined domain):
+    //   Level 0       → same as inflammation (≤6)
+    //   Level I       → 7  (small polyps)
+    //   Level II      → 8  (medium polyps)
+    //   Level III     → 9  (large polyps / complete obstruction)
+    // Note from paper: DIP can be "estimated but not converted directly"
+    const dipInflMap = [0, 3, 5, 10, 10];
+    const dipDiscMap = [0, 5, 10, 10];
+    const dipInfl = dipInflMap[maxE];
+    const dipDisc = dipDiscMap[maxD];
+    let dipPolyEd;
+    if      (polyp === 0) dipPolyEd = dipInfl;   // ≤6
+    else if (polyp === 1) dipPolyEd = 7;
+    else if (polyp === 2) dipPolyEd = 8;
+    else                  dipPolyEd = 9;           // Level III
+    const dipTotal = dipDisc + dipInfl + dipPolyEd;
+
+    const dipInflDescs = {
+      es: ['Sin inflamación','Inflamación leve','Inflamación moderada','Inflamación severa','Inflamación severa'],
+      en: ['No inflammation','Mild inflammation','Moderate inflammation','Severe inflammation','Severe inflammation']
+    };
+    const dipDiscDescs = {
+      es: ['Sin secreción','Mucus espeso','Secreción purulenta','Secreción purulenta'],
+      en: ['No discharge','Thick mucus','Purulent discharge','Purulent discharge']
+    };
+    const dipPolyEdDescs = {
+      es: {
+        inf: 'Igual al score de inflamación (sin pólipos visibles)',
+        7:   'Pólipos pequeños',
+        8:   'Pólipos medianos',
+        9:   'Pólipos grandes / obstrucción completa'
+      },
+      en: {
+        inf: 'Same as inflammation score (no visible polyps)',
+        7:   'Small polyps',
+        8:   'Medium polyps',
+        9:   'Large polyps / complete obstruction'
+      }
+    };
+    const polyEdDesc = polyp === 0
+      ? dipPolyEdDescs[lang].inf
+      : dipPolyEdDescs[lang][dipPolyEd];
+
+    const estNoteText = lang === 'es'
+      ? 'Estimación — el DIP no tiene límites numéricos estrictos en sus subdominios. La conversión es aproximada según indica la tabla del artículo.'
+      : 'Estimate — the DIP score lacks strict numeric limits in its subdomains. Conversion is approximate as noted in the paper\'s table.';
+
+    document.getElementById('dip-content').innerHTML = `
+      <div class="conv-score-display">
+        <span class="conv-score-big">~${dipTotal}</span>
+        <span class="conv-score-max">/ 30</span>
+      </div>
+      <div class="conv-breakdown">
+        <div class="conv-row">
+          <span class="cr-label"><span class="es">Inflamación</span><span class="en">Inflammation</span></span>
+          <span class="cr-val">${dipInfl} &nbsp;<small style="font-weight:300;font-size:.68rem;color:var(--muted)">${dipInflDescs[lang][maxE]}</small></span>
+        </div>
+        <div class="conv-row">
+          <span class="cr-label"><span class="es">Secreción</span><span class="en">Discharge</span></span>
+          <span class="cr-val">${dipDisc} &nbsp;<small style="font-weight:300;font-size:.68rem;color:var(--muted)">${dipDiscDescs[lang][maxD]}</small></span>
+        </div>
+        <div class="conv-row">
+          <span class="cr-label"><span class="es">Pólipos/Edema</span><span class="en">Polyp/Edema</span></span>
+          <span class="cr-val">${dipPolyEd} &nbsp;<small style="font-weight:300;font-size:.68rem;color:var(--muted)">${polyEdDesc}</small></span>
+        </div>
+      </div>
+      <div class="conv-est-note">ⓘ ${estNoteText}</div>`;
+
+    document.getElementById('conversionSection').style.display = 'block';
+  }
+
+  function resetSiNES() {
+    keys.forEach(k => {
+      document.getElementById(`na-${k}`).checked = false;
+      document.getElementById(`row-${k}`).classList.remove('row-na');
+      [`e-${k}`,`d-${k}`,`s-${k}`].forEach(id => {
+        document.getElementById(id).value = 0;
+        document.getElementById(id).disabled = false;
+      });
+    });
+    document.querySelector('input[name="polyp"][value="0"]').checked = true;
+    ['rTotal','rEdema','rDisc','rScar','rPoly'].forEach(id => document.getElementById(id).textContent = '—');
+    document.getElementById('sevFill').style.width = '0%';
+    document.getElementById('sevText').textContent = '';
+    // Reset conversions
+    document.getElementById('conversionSection').style.display = 'none';
+    const lang = 'es';
+    const naMsg = lang === 'en'
+      ? '<div class="conv-na">Press Calculate to see conversion</div>'
+      : '<div class="conv-na">Presiona Calcular para ver la conversión</div>';
+    ['mlk-content','nps-content','dip-content'].forEach(id => document.getElementById(id).innerHTML = naMsg);
+    validatePolypExtension();
+  }
+
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-q.open').forEach(b => {
+      b.classList.remove('open');
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.classList.remove('open');
+    });
+    // Open clicked if it was closed
+    if (!isOpen) {
+      btn.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      answer.classList.add('open');
+    }
+  }
+
+  // Init
+  buildSinesTable();
+  validatePolypExtension();
+
+  // ── CONTACT FORM ──
+  function updateCharCount() {
+    const ta  = document.getElementById('msgBody');
+    const cnt = document.getElementById('charCount');
+    const bar = document.getElementById('charCounter');
+    if (!ta || !cnt) return;
+    const len = ta.value.length;
+    cnt.textContent = len;
+    bar.className = 'char-counter' + (len > 1400 ? ' over' : len > 1200 ? ' warn' : '');
+  }
+
+  function validateForm() {
+    const subject = document.getElementById('msgSubject').value.trim();
+    const body    = document.getElementById('msgBody').value.trim();
+    const btn     = document.getElementById('sendBtn');
+    if (btn) btn.disabled = !(subject.length > 0 && body.length > 0);
+  }
+
+  function sendMessage() {
+    const subject = document.getElementById('msgSubject').value.trim();
+    const body    = document.getElementById('msgBody').value.trim();
+    const notice  = document.getElementById('formNotice');
+    if (!subject || !body) return;
+    const to     = 'hernaiz.spn@gmail.com';
+    const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+    setTimeout(() => { if (notice) { notice.style.display = 'block'; } }, 800);
+  }
+</script>
+</body>
+</html>
